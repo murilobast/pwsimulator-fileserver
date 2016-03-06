@@ -38,7 +38,7 @@ console.log("File server listening on: http://localhost:%s", PORT.file);
 
 // FUNCTIONS
 function isLocal(address) {
-	return address === '::1' || address === '::ffff:127.0.0.1' || address === '127.0.0.1';
+	return address === '::1' || address === '::ffff:127.0.0.1' || address === '127.0.0.1' || address === '::ffff:104.236.201.180' || address === '104.236.201.180';
 }
 
 function getFile(file) {
