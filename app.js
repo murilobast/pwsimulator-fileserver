@@ -20,7 +20,6 @@ http.createServer(function (req, res) {
 
 	if (isLocal(req.connection.remoteAddress)) {
 		if (typeof file.url !== 'undefined') {
-			console.log('Inserting ' + file.id + '.png!');
 			getFile(file);
 		}
 	}
@@ -41,6 +40,13 @@ function isLocal(address) {
 	return address === '::1' || address === '::ffff:127.0.0.1' || address === '127.0.0.1' || address === '::ffff:104.236.201.180' || address === '104.236.201.180';
 }
 
-function getFile(file) {
-	wget.download(file.url, 'img/' + file.id + '.png');
+function getFile(file, type) {
+	if (file.type === 'card') {
+		console.log('Inserting cards/' + file.id + '.jpg!');
+		wget.download(file.url, 'img/cards/' + file.id + '.jpg');
+	} else {
+		console.log('Inserting ' + file.id + '.png!');
+		wget.download(file.url, 'img/' + file.id + '.png');		
+	}
+	
 }
